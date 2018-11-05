@@ -1,5 +1,6 @@
 # rft
 registrate new file type in Windows
+-----------------------------------
 
 using
     >rft txt txtFile "text document" "notepad++ %1" "c:\windows\ShellNew\std text doc.txt"
