@@ -7,7 +7,9 @@ using
 	>rft txt txtFile "text document" "notepad++ %1" "c:\windows\ShellNew\std text doc.txt"  
 or
 
-	>rft (i) (infArc) "описание архива" "notepad++ %1" "c:\windows\ShellNew\(arcInfo).(i)"  
+	>rft (i) (infArc) "описание архива" "notepad++ %1" "c:\windows\ShellNew\(arcInfo).(i)"
+	> 0   1    2           3               4                    5
+
 
 parameters 1-4 required  
 parameter  5   not required  

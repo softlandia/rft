@@ -1,3 +1,4 @@
+//rft -- register type file
 package main
 
 import (
@@ -14,7 +15,8 @@ import (
 //4 parameters required
 //5-th parameter optional
 func testInputParams() error {
-	//return nil
+	//rft (i) (infArc) "описание архива" "notepad++ %1" "c:\windows\ShellNew\(arcInfo).(i)"
+	//0    1     2             3              4                   5
 	if len(os.Args) < 2 {
 		return errors.New("required 4 parameters")
 	}
@@ -25,22 +27,16 @@ func testInputParams() error {
 		return errors.New("1 arg: '" + os.Args[1] + "' contain symbols '\\'")
 	}
 	if !xLib.StrIsPrintRune(os.Args[2]) {
-		return errors.New("1 arg: '" + os.Args[2] + "' contain non printable symbols!")
+		return errors.New("2 arg: '" + os.Args[2] + "' contain non printable symbols!")
 	}
 	if xLib.StrContainBackSlash(os.Args[2]) {
-		return errors.New("1 arg: '" + os.Args[2] + "' contain symbols '\\'")
+		return errors.New("2 arg: '" + os.Args[2] + "' contain symbols '\\'")
 	}
 	if !xLib.StrIsPrintRune(os.Args[3]) {
-		return errors.New("1 arg: '" + os.Args[3] + "' contain non printable symbols!")
+		return errors.New("3 arg: '" + os.Args[3] + "' contain non printable symbols!")
 	}
 	if xLib.StrContainBackSlash(os.Args[3]) {
-		return errors.New("1 arg: '" + os.Args[3] + "' contain symbols '\\'")
-	}
-	if !xLib.StrIsPrintRune(os.Args[4]) {
-		return errors.New("1 arg: '" + os.Args[4] + "' contain non printable symbols!")
-	}
-	if xLib.StrContainBackSlash(os.Args[4]) {
-		return errors.New("1 arg: '" + os.Args[4] + "' contain symbols '\\'")
+		return errors.New("3 arg: '" + os.Args[3] + "' contain symbols '\\'")
 	}
 
 	if len(os.Args) > 5 {
@@ -77,7 +73,11 @@ func main() {
 		os.Args[3],
 		os.Args[4],
 		pathToTemplate)
-	fmt.Println(err)
+	if err != nil {
+		fmt.Printf("error: %v\n", err)
+	} else {
+		fmt.Println("ext added successful")
+	}
 }
 
 //parameters: ext, regKeyName, fTypeName & openCommand can't be empty
